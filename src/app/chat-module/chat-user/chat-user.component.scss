@@ -1,0 +1,125 @@
+.all-container{
+    padding: 35px;
+}
+.card-container {
+    background: linear-gradient(to bottom, #202020, #777777);
+    align-items: center;
+    height: 100vh;
+    gap: 35px;
+}
+
+
+
+
+.mensaje {
+    margin: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .enviado {
+    align-self: flex-start;
+    position: relative;
+    background-color: #b8b8b8; /* Azul suave */
+    border: 1px solid #b8b8b8; /* Borde del mismo color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .recibido {
+    align-self: flex-end;
+    position: relative;
+    background-color: rgb(236, 236, 236); /* Amarillo suave */
+    border: 1px solid rgb(236, 236, 236); /* Borde del mismo color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .otro {
+    align-self: flex-start;
+    position: relative;
+    background-color: #D6A2E8; /* Púrpura suave */
+    border: 1px solid #D6A2E8; /* Borde del mismo color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+
+
+.message-text {
+    resize: none; /* Evita que se pueda redimensionar manualmente */
+    overflow: hidden; /* Evita el desbordamiento del contenido */
+    border: none; /* Elimina el borde por defecto */
+    background: none; /* Fondo transparente */
+    width: 100%; /* Ancho al 100% del contenedor */
+    padding: 0; /* Elimina el relleno interno */
+    font-size: inherit; /* Tamaño de fuente heredado */
+    line-height: inherit; /* Altura de línea heredada */
+
+    
+}
+
+.card-body{
+    ::-webkit-scrollbar{
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+    ::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+        border-radius: 10px;
+        background-color: #CCCCCC;
+    }
+    ::-webkit-scrollbar-thumb{
+        border-radius: 10px;
+        background-color: #707070;
+        background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)
+    }
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 25px;
+  }
+  
+
+
+
+  .wave {
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+  }
+  
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(0, 133, 133);;;
+    animation: waveAnimation 1.6s ease infinite;
+  }
+  
+  .dot1 {
+    animation-delay: 0s; /* Inicia la animación inmediatamente */
+  }
+  
+  .dot2 {
+    animation-delay: 0.5s; /* Retrasa la animación del segundo punto */
+  }
+  
+  .dot3 {
+    animation-delay: 1s; /* Retrasa la animación del tercer punto */
+  }
+  
+  @keyframes waveAnimation {
+    0%, 60%, 100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  
