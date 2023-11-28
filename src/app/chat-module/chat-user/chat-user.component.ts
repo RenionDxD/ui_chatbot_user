@@ -10,7 +10,7 @@ export class ChatUserComponent {
 
   mensaje: string = '';
   pregunta: string = '';
-  mensajes: { texto: string, tipo: string, color?: string }[] = [];
+  mensajes: { texto: string, tipo: string, find?: string, mostrado?:string }[] = [];
   preguntas: { pregunta: string, tipo: string }[] = [];
   color: string = '';
  
@@ -30,10 +30,9 @@ export class ChatUserComponent {
     this.chatService.enviarMensaje(this.mensaje).subscribe(
       (respuesta) => {
         this.preguntas = [];
-
         this.mensajes.push({ texto: this.mensaje, tipo: 'enviado' });
-        const colorDelMensajeRecibido = respuesta.color_solucion ? '' : '#d75b5d';
-        this.mensajes.push({ texto: respuesta.solucion, tipo: 'recibido', color: colorDelMensajeRecibido });
+        const colorDelMensajeRecibido = respuesta.find ? '' : '#d75b5d';
+        this.mensajes.push({ texto: respuesta.solucion, tipo: 'recibido', find: colorDelMensajeRecibido, mostrado: respuesta.find });
         // Agregar mensajes similares en tarjetas
         this.preguntas.push({ pregunta: respuesta.similares, tipo: 'preguntas' });
         this.mensaje = '';
@@ -49,9 +48,9 @@ export class ChatUserComponent {
 
   enviarPregunta(pregunta: string){
     this.loading = true;
+    this.preguntas = [];
     this.chatService.enviarMensaje(pregunta).subscribe(
       (respuesta) => {
-        this.preguntas = [];
         this.mensajes.push({ texto: pregunta, tipo: 'enviado' });
         this.mensajes.push({ texto: respuesta.solucion, tipo: 'recibido' });
         // Agregar mensajes similares en tarjetas
@@ -67,8 +66,15 @@ export class ChatUserComponent {
     ); 
   }
 
+
   showAlert(reaction: boolean,mensaje:string): void {
-    this.chatService.sendReview(reaction,mensaje).subscribe()
+    const indiceMensaje = this.mensajes.findIndex(m => m.texto === mensaje);
+    if (indiceMensaje !== -1) {
+      // Resta una posición al índice
+      const nuevoIndice = indiceMensaje - 1;
+      const Pregunta = this.mensajes[nuevoIndice]['texto']
+      this.chatService.sendReview(reaction,mensaje,Pregunta).subscribe()
+    }
   }
 
 

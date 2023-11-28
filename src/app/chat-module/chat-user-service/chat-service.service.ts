@@ -22,9 +22,10 @@ export class ChatServiceService {
     return this.http.get(this.apiUrl2);
   }
 
-  sendReview(review: boolean, respuesta: string) {
+  sendReview(review: boolean, respuesta: string, Pregunta: string) {
     const body = { "respuesta": respuesta,
-                   "review":review };
+                   "review":review,
+                   "pregunta":Pregunta };
     return this.http.post<any>(this.apiUrl3, body );
   }
 }

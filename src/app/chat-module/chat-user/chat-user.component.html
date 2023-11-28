@@ -31,14 +31,15 @@
                             <p>Tu</p>
                         </div>
 
-                        <div class="message-text" [style.color]="msg.color">
+                        <div class="message-text" [style.color]="msg.find">
                             {{ msg.texto }}
                         </div>
 
+                
 
-                        <div style="display: flex; flex-direction: column; align-items: flex-end; font-size: 10px;" *ngIf="msg.tipo === 'recibido'">
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; font-size: 10px;" *ngIf="msg.tipo === 'recibido'&& !msg.find">
                             <p>¿Te sirvio esta respuesta?</p>
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group" >
                                 <input type="radio" class="btn-check" name="btnradio{{i}}" id="btnradio1{{i}}" autocomplete="off" (change)="showAlert(true,msg.texto)">
                                 <label class="btn btn-outline-primary" for="btnradio1{{i}}" style="border-radius: 50px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -73,7 +74,7 @@
 
                 <div  *ngFor="let msg of preguntas" class="preguntas" [ngClass]="{ 'preguntas': msg.tipo === 'preguntas' }">
                     <div style="display: flex; overflow-x: auto;">
-                        <button (click)="enviarPregunta(pregunta)" *ngFor="let pregunta of msg.pregunta" class="btn btn-outline-secondary" style="font-size: 10px; margin: 10px; border-radius: 30px;">
+                        <button (click)="enviarPregunta(pregunta)" *ngFor="let pregunta of msg.pregunta" class="btn btn-outline-secondary" style="font-size: 12px; margin: 10px; border-radius: 30px;">
                             {{ pregunta }}
                         </button>
                     </div>
